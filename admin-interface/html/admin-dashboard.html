@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Dashboard - Barangay Inarawan</title>
+  <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body>
+  <div class="admin-page">
+    <aside class="admin-sidebar">
+      <div class="sidebar-content">
+        <div class="sidebar-logo">
+          <img src="../../images/brgy-logo.png" alt="Barangay Inarawan Logo" class="logo-img">
+        </div>
+
+        <nav class="admin-menu">
+          <ul>
+            <li>
+              <a href="#dashboard" class="menu-item active" data-section="dashboard">
+                <span class="menu-icon">📊</span>
+                <span class="menu-text">DASHBOARD</span>
+              </a>
+            </li>
+            <li class="menu-group">
+              <a href="#" class="menu-item has-submenu">
+                <span class="menu-icon">📋</span>
+                <span class="menu-text">REQUEST</span>
+                <span class="submenu-arrow">▼</span>
+              </a>
+              <ul class="submenu">
+            <li><a href="#" class="submenu-item">Barangay I.D</a></li>
+                <li><a href="#" class="submenu-item">Barangay Clearance</a></li>
+                <li><a href="#" class="submenu-item">Barangay Certificate</a></li>
+                <li><a href="#" class="submenu-item">Certificate of Indigency</a></li>
+                <li><a href="#" class="submenu-item">Certificate of Residency</a></li>
+                <li><a href="#" class="submenu-item">First-Time Job Seeker</a></li>
+                <li><a href="#" class="submenu-item">Barangay Business Clearance</a></li>
+                <li><a href="#" class="submenu-item">Barangay Blotter / Certification</a></li>
+                <li><a href="#" class="submenu-item">Construction / Fencing Permit</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#approved" class="menu-item" data-section="approved">
+                <span class="menu-icon">✓</span>
+                <span class="menu-text">APPROVED</span>
+              </a>
+            </li>
+            <li>
+              <a href="#declined" class="menu-item" data-section="declined">
+                <span class="menu-icon">✕</span>
+                <span class="menu-text">DECLINED</span>
+              </a>
+            </li>
+            <li>
+              <a href="#in-progress" class="menu-item" data-section="in-progress">
+                <span class="menu-icon">⏳</span>
+                <span class="menu-text">IN PROGRESS</span>
+              </a>
+            </li>
+            <li>
+              <a href="#history" class="menu-item" data-section="history">
+                <span class="menu-icon">📜</span>
+                <span class="menu-text">HISTORY</span>
+              </a>
+            </li>
+          </ul>
+
+          <button class="signout-btn" onclick="ADMIN_DASHBOARD_UI.handleSignOut()">
+            <span class="menu-icon">🚪</span>
+            <span class="menu-text">SIGN OUT</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">DASHBOARD</h1>
+            </div>
+            
+            <!-- Statistics Cards -->
+            <div class="stats-grid-container">
+              <div class="stats-card stats-total">
+                <div class="stats-icon">📊</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-total">0</div>
+                  <div class="stats-label">Total Submissions</div>
+                </div>
+              </div>
+              
+              <div class="stats-card stats-pending">
+                <div class="stats-icon">⏳</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-pending">0</div>
+                  <div class="stats-label">Pending</div>
+                </div>
+              </div>
+              
+              <div class="stats-card stats-approved">
+                <div class="stats-icon">✓</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-approved">0</div>
+                  <div class="stats-label">Approved</div>
+                </div>
+              </div>
+              
+              <div class="stats-card stats-declined">
+                <div class="stats-icon">✕</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-declined">0</div>
+                  <div class="stats-label">Declined</div>
+                </div>
+              </div>
+              
+              <div class="stats-card stats-received">
+                <div class="stats-icon">📦</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-received">0</div>
+                  <div class="stats-label">Ready to Receive</div>
+                </div>
+              </div>
+              
+              <div class="stats-card stats-rate">
+                <div class="stats-icon">📈</div>
+                <div class="stats-content">
+                  <div class="stats-value" id="stat-rate">0%</div>
+                  <div class="stats-label">Completion Rate</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Dashboard Title -->
+            <div class="dashboard-section-title">
+              <h2>REQUEST PENDING TO APPROVED</h2>
+            </div>
+            
+            <div class="document-grid-container">
+              <div class="document-grid" id="dashboard-cards">
+                <!-- Summary cards will be generated here by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Request Section -->
+        <section id="request" class="content-section">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 id="request-section-title" class="section-title">ALL SUBMISSIONS</h1>
+            </div>
+            <div class="admin-form-container">
+              <!-- Forms will be dynamically loaded from localStorage -->
+              <div id="submissions-container">
+                <!-- Submissions will be generated here by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Approved Section -->
+        <section id="approved" class="content-section">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">APPROVED REQUESTS</h1>
+            </div>
+            <div class="dashboard-content">
+              <div id="approved-list" class="status-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Declined Section -->
+        <section id="declined" class="content-section">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">DECLINED REQUESTS</h1>
+            </div>
+            <div class="dashboard-content">
+              <div id="declined-list" class="status-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- In Progress Section -->
+        <section id="in-progress" class="content-section">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">IN PROGRESS REQUESTS</h1>
+            </div>
+            <div class="dashboard-content">
+              <div id="inprogress-list" class="status-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="content-section">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">COMPLETED REQUESTS HISTORY</h1>
+              <div class="history-info">Requests marked as received and archived</div>
+            </div>
+            <div class="dashboard-content">
+              <!-- History Stats -->
+              <div class="history-stats-container">
+                <div class="history-stat-item">
+                  <span class="history-stat-label">Total Completed:</span>
+                  <span class="history-stat-value" id="history-total">0</span>
+                </div>
+                <div class="history-stat-item">
+                  <span class="history-stat-label">Received:</span>
+                  <span class="history-stat-value" id="history-received">0</span>
+                </div>
+              </div>
+              <div id="history-list" class="status-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Received Section (Hidden - kept for reference) -->
+        <section id="received" class="content-section" style="display: none;">
+          <div class="section-inner">
+            <div class="section-header-inner">
+              <h1 class="section-title">READY FOR RECEIPT</h1>
+            </div>
+            <div class="dashboard-content">
+              <div id="received-list" class="status-list"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Set API base URL for frontend-backend communication
+    window.__API_BASE_URL__ = 'http://localhost:3000';
+  </script>
+  <script src="../../js/constants.js"></script>
+  <script src="../../js/auth.js"></script>
+  <script src="../js/admin-submission-handler.js"></script>
+  <script src="../js/admin-dashboard-ui.js"></script>
+</body>
+</html>
