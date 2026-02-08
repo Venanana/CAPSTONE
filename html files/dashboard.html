@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="../css/notification.css">
   <link rel="stylesheet" href="../css/polish.css">
 </head>
+
 <body>
   <div class="page-bg dashboard-page">
     <header class="topbar topbar-fixed">
@@ -131,23 +133,23 @@
 
   <script>
     // Function to show form by id and set active menu
-    function showFormById(formId){
-      if(!formId) return;
+    function showFormById(formId) {
+      if (!formId) return;
       // Remove active
-      document.querySelectorAll('.dash-menu ul li').forEach(x=>x.classList.remove('active'))
+      document.querySelectorAll('.dash-menu ul li').forEach(x => x.classList.remove('active'))
       // Set active on matching li
-      var targetLi = document.querySelector('.dash-menu ul li[data-form="'+formId+'"]');
-      if(targetLi) targetLi.classList.add('active');
+      var targetLi = document.querySelector('.dash-menu ul li[data-form="' + formId + '"]');
+      if (targetLi) targetLi.classList.add('active');
 
       // Hide panels
-      document.querySelectorAll('.form-panel').forEach(panel=>panel.style.display='none');
+      document.querySelectorAll('.form-panel').forEach(panel => panel.style.display = 'none');
       var selected = document.getElementById(formId);
-      if(selected) selected.style.display='block';
+      if (selected) selected.style.display = 'block';
     }
 
     // Attach click handlers for menu items
-    document.querySelectorAll('.dash-menu ul li').forEach(li=>{
-      li.addEventListener('click',()=>{
+    document.querySelectorAll('.dash-menu ul li').forEach(li => {
+      li.addEventListener('click', () => {
         var formId = li.getAttribute('data-form');
         localStorage.setItem('dashboardSelectedForm', formId);
         showFormById(formId);
@@ -155,8 +157,8 @@
     })
 
     // On load, check for hash (#formId) or query ?form=formId or localStorage preference
-    document.addEventListener('DOMContentLoaded', function(){
-      var hash = (location.hash || '').replace('#','');
+    document.addEventListener('DOMContentLoaded', function () {
+      var hash = (location.hash || '').replace('#', '');
       var params = new URLSearchParams(location.search);
       var q = params.get('form');
       var saved = localStorage.getItem('dashboardSelectedForm');
@@ -180,4 +182,5 @@
   <script src="../js/form-submission.js"></script>
   <script src="../js/homepage.js"></script>
 </body>
+
 </html>
