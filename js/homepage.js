@@ -1,6 +1,6 @@
 // homepage.js - Homepage interactions and authentication
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Initialize
   updateSignInUI();
   populateBirthSelects();
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Update sign in UI based on authentication state
 function updateSignInUI() {
   const isLoggedIn = AUTH.isLoggedIn();
-  
+
   if (isLoggedIn) {
     DOM_UTILS.hide('#signinBtn');
     DOM_UTILS.show('#logoutBtn');
@@ -71,8 +71,8 @@ function populateBirthSelects() {
   }
 
   // Months
-  const months = ['Month', 'January', 'February', 'March', 'April', 'May', 'June', 
-                  'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = ['Month', 'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
   const monthSelect = document.querySelector('#birth-month');
   if (monthSelect) {
     monthSelect.innerHTML = '';
@@ -130,11 +130,11 @@ async function handleRegistration() {
   const birthDay = DOM_UTILS.getInputValue('#birth-day');
   const birthMonth = DOM_UTILS.getInputValue('#birth-month');
   const birthYear = DOM_UTILS.getInputValue('#birth-year');
-  
+
   let birthDate = '';
   if (birthDay && birthMonth && birthYear) {
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
-                        'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'];
     const monthIndex = parseInt(birthMonth) - 1;
     birthDate = `${birthDay} ${monthNames[monthIndex]} ${birthYear}`;
   }
