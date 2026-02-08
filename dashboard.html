@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/notification.css">
+  <link rel="stylesheet" href="../css/polish.css">
+</head>
+<body>
+  <div class="page-bg dashboard-page">
+    <header class="topbar topbar-fixed">
+      <div class="header-left">
+        <div class="logo">
+          <img src="../images/brgy-logo.png" alt="Barangay Inarawan" class="logo-img">
+        </div>
+        <h1 class="header-title">BARANGAY INARAWAN</h1>
+      </div>
+
+      <div class="top-icons">
+        <div class="icon">
+          <a href="profile.html" class="icon-link" title="Profile" aria-label="Profile">
+            <img src="../images/image 62.png" alt="Profile icon">
+          </a>
+          <span class="icon-label">Profile</span>
+        </div>
+
+        <div class="icon">
+          <a href="portal.html" class="icon-link" title="Home" aria-label="Home">
+            <img src="../images/image 59.png" alt="Home icon">
+          </a>
+          <span class="icon-label">Home</span>
+        </div>
+
+        <div class="icon">
+          <a href="#" class="icon-link" title="Notification" aria-label="Notification">
+            <img src="../images/image 60.png" alt="Notification icon">
+          </a>
+          <span class="icon-label">Notification</span>
+        </div>
+
+        <div class="icon">
+          <a href="settings.html" class="icon-link" title="Settings" aria-label="Settings">
+            <img src="../images/image 61.png" alt="Settings icon">
+          </a>
+          <span class="icon-label">Settings</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-wrapper">
+        <aside class="dash-sidebar">
+          <div class="dash-menu">
+            <h3 class="dash-menu-title">DASHBOARD</h3>
+            <ul>
+              <li class="active" data-form="barangay-id">Barangay I.D</li>
+              <li data-form="barangay-clearance">Barangay Clearance</li>
+              <li data-form="barangay-certificate">Barangay Certificate</li>
+              <li data-form="certificate-indigency">Certificate of Indigency</li>
+              <li data-form="certificate-residency">Certificate of Residency</li>
+              <li data-form="first-time-seeker">First-Time Job Seeker</li>
+              <li data-form="business-clearance">Barangay Business Clearance</li>
+              <li data-form="blotter-certification">Barangay Blotter / Certification</li>
+              <li data-form="construction-permit">Construction / Fencing Permit</li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="dashboard-container">
+          <!-- Barangay I.D Form -->
+          <div class="form-panel" id="barangay-id" style="display:block">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-user-info"></div>
+            </div>
+          </div>
+
+          <!-- Barangay Clearance Form -->
+          <div class="form-panel" id="barangay-clearance" style="display:none">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-user-info"></div>
+            </div>
+          </div>
+
+          <!-- Barangay Certificate Form -->
+          <div class="form-panel" id="barangay-certificate" style="display:none">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-user-info"></div>
+            </div>
+          </div>
+
+          <!-- Certificate of Indigency Form -->
+          <div class="form-panel" id="certificate-indigency" style="display:none">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-user-info"></div>
+            </div>
+          </div>
+          <div class="form-panel" id="certificate-residency" style="display:none">
+            <div class="dashboard-panel empty-panel">
+              <p>Form content coming soon...</p>
+            </div>
+          </div>
+          <div class="form-panel" id="first-time-seeker" style="display:none">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-user-info"></div>
+            </div>
+          </div>
+          <div class="form-panel" id="business-clearance" style="display:none">
+            <div class="dashboard-panel empty-panel">
+              <p>Form content coming soon...</p>
+            </div>
+          </div>
+          <div class="form-panel" id="blotter-certification" style="display:none">
+            <div class="dashboard-panel empty-panel">
+              <p>Form content coming soon...</p>
+            </div>
+          </div>
+          <!-- Construction / Fencing Permit Form -->
+          <div class="form-panel" id="construction-permit" style="display:none">
+            <div class="dashboard-panel">
+              <div class="form-placeholder" data-template="tpl-construction-permit"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Function to show form by id and set active menu
+    function showFormById(formId){
+      if(!formId) return;
+      // Remove active
+      document.querySelectorAll('.dash-menu ul li').forEach(x=>x.classList.remove('active'))
+      // Set active on matching li
+      var targetLi = document.querySelector('.dash-menu ul li[data-form="'+formId+'"]');
+      if(targetLi) targetLi.classList.add('active');
+
+      // Hide panels
+      document.querySelectorAll('.form-panel').forEach(panel=>panel.style.display='none');
+      var selected = document.getElementById(formId);
+      if(selected) selected.style.display='block';
+    }
+
+    // Attach click handlers for menu items
+    document.querySelectorAll('.dash-menu ul li').forEach(li=>{
+      li.addEventListener('click',()=>{
+        var formId = li.getAttribute('data-form');
+        localStorage.setItem('dashboardSelectedForm', formId);
+        showFormById(formId);
+      })
+    })
+
+    // On load, check for hash (#formId) or query ?form=formId or localStorage preference
+    document.addEventListener('DOMContentLoaded', function(){
+      var hash = (location.hash || '').replace('#','');
+      var params = new URLSearchParams(location.search);
+      var q = params.get('form');
+      var saved = localStorage.getItem('dashboardSelectedForm');
+      var formToShow = hash || q || saved || 'barangay-id';
+      console.debug('DASHBOARD: hash=', hash, 'query=', q, 'saved=', saved, 'formToShow=', formToShow);
+      // show the form
+      showFormById(formToShow);
+    });
+  </script>
+  <script>
+    // Set API base URL for frontend-backend communication
+    window.__API_BASE_URL__ = 'http://localhost:3000';
+  </script>
+  <script src="../js/constants.js"></script>
+  <script src="../js/dom-utils.js"></script>
+  <script src="../js/notification.js"></script>
+  <script src="../js/form-validator.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/include.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="../js/form-submission.js"></script>
+  <script src="../js/homepage.js"></script>
+</body>
+</html>

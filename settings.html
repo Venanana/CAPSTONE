@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link rel="stylesheet" href="../css/shared.css">
+  <link rel="stylesheet" href="../css/settings.css">
+  <link rel="stylesheet" href="../css/notification.css">
+  <link rel="stylesheet" href="../css/polish.css">
+</head>
+<body>
+  <div class="page-bg settings-page">
+    <header class="topbar topbar-fixed">
+      <div class="header-left">
+        <div class="logo">
+          <img src="../images/brgy-logo.png" alt="Barangay Inarawan" class="logo-img">
+        </div>
+        <h1 class="header-title">BARANGAY INARAWAN</h1>
+      </div>
+
+      <div class="top-icons">
+        <div class="icon">
+          <a href="profile.html" class="icon-link" title="Profile" aria-label="Profile">
+            <img src="../images/image 62.png" alt="Profile icon">
+          </a>
+          <span class="icon-label">Profile</span>
+        </div>
+
+        <div class="icon">
+          <a href="/html/portal.html" class="icon-link" title="Home" aria-label="Home">
+            <img src="../images/image 59.png" alt="Home icon">
+          </a>
+          <span class="icon-label">Home</span>
+        </div>
+
+        <div class="icon">
+          <a href="#" class="icon-link" title="Notification" aria-label="Notification">
+            <img src="../images/image 60.png" alt="Notification icon">
+          </a>
+          <span class="icon-label">Notification</span>
+        </div>
+
+        <div class="icon">
+          <a href="settings.html" class="icon-link" title="Settings" aria-label="Settings">
+            <img src="../images/image 61.png" alt="Settings icon">
+          </a>
+          <span class="icon-label">Settings</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="settings-main">
+      <div class="settings-wrapper">
+        <aside class="settings-sidebar">
+          <div class="settings-menu">
+            <h3 class="settings-menu-title">SETTINGS</h3>
+            <ul>
+              <li class="active" data-section="contacts">
+                <span class="menu-icon">👤</span>
+                <span>Contacts</span>
+              </li>
+              <li data-section="tracker">
+                <span class="menu-icon">📊</span>
+                <span>Tracker</span>
+              </li>
+              <li data-section="password">
+                <span class="menu-icon">🔐</span>
+                <span>Change Password</span>
+              </li>
+              <li data-section="privacy">
+                <span class="menu-icon">🔒</span>
+                <span>Data Privacy</span>
+              </li>
+              <li data-section="logout">
+                <span class="menu-icon">🚪</span>
+                <span>Log out</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="settings-container">
+          <!-- Contacts Section -->
+          <div class="section-panel" id="contacts" style="display:block">
+            <div class="settings-panel">
+              <h2>Contacts</h2>
+              <div class="content-section">
+                <div class="contact-item">
+                  <h4>Barangay Hall</h4>
+                  <p><strong>Address:</strong> Inarawan, Rizal</p>
+                  <p><strong>Phone:</strong> (02) XXXX-XXXX</p>
+                  <p><strong>Email:</strong> barangay@inarawan.gov.ph</p>
+                </div>
+                <div class="contact-item">
+                  <h4>Barangay Officials</h4>
+                  <p><strong>Barangay Captain:</strong> [Name]</p>
+                  <p><strong>Contact:</strong> +63-XXX-XXX-XXXX</p>
+                </div>
+                <div class="contact-item">
+                  <h4>Emergency Services</h4>
+                  <p><strong>Police:</strong> 117 or +63-2-XXXX-XXXX</p>
+                  <p><strong>Fire:</strong> 160 or +63-2-XXXX-XXXX</p>
+                  <p><strong>Medical:</strong> 911 or +63-2-XXXX-XXXX</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tracker Section -->
+          <div class="section-panel" id="tracker" style="display:none">
+            <div class="settings-panel">
+              <h2>Application Tracker</h2>
+              <div class="content-section" id="tracker-content">
+                <!-- Submissions will be dynamically loaded here -->
+                <p class="empty-tracker">No submissions yet.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change Password Section -->
+          <div class="section-panel" id="password" style="display:none">
+            <div class="settings-panel">
+              <h2>Change Password</h2>
+              <div class="content-section">
+                <form id="passwordForm" style="max-width: 400px;">
+                  <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="currentPassword" style="display: block; margin-bottom: 8px; font-weight: 600;">Current Password</label>
+                    <input 
+                      type="password" 
+                      id="currentPassword" 
+                      placeholder="Enter your current password"
+                      required
+                      style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;"
+                    >
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="newPassword" style="display: block; margin-bottom: 8px; font-weight: 600;">New Password</label>
+                    <input 
+                      type="password" 
+                      id="newPassword" 
+                      placeholder="Enter new password"
+                      required
+                      minlength="8"
+                      style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;"
+                    >
+                    <small style="display: block; margin-top: 4px; color: #666;">Minimum 8 characters</small>
+                  </div>
+
+                  <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="confirmPassword" style="display: block; margin-bottom: 8px; font-weight: 600;">Confirm Password</label>
+                    <input 
+                      type="password" 
+                      id="confirmPassword" 
+                      placeholder="Confirm new password"
+                      required
+                      minlength="8"
+                      style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;"
+                    >
+                  </div>
+
+                  <div class="form-actions" style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Update Password</button>
+                    <button type="reset" class="btn btn-secondary" style="flex: 1;">Cancel</button>
+                  </div>
+
+                  <div id="passwordMessage" style="margin-top: 15px; padding: 12px; border-radius: 4px; display: none;"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Privacy Section -->
+          <div class="section-panel" id="privacy" style="display:none">
+            <div class="settings-panel">
+              <h2>Data Privacy</h2>
+              <div class="content-section">
+                <div class="privacy-content">
+                  <h4>Data Privacy Statement</h4>
+                  <p>Taking into account the BARANGAY's principle of Nobility, Bravery and Integrity, the public and other government agencies and branches can be assured that any personal data they entrusted to the barangay shall be used with due diligence and prudence, for the sole purpose of issuing individual clearance Certificate, which may include investigation of derogatory record pursuant to our mandate under RA 10867.</p>
+                  <p>As such, upon n accessing the BARANGAY's online registration site and availing of our services you acknowledge and agree that the information may be used and disclosed by the Barangay in accordance with any legal and regulatory standards and in compliance with the "Data Privacy Act of 2012"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-panel" id="logout" style="display:none">
+            <div class="settings-panel">
+              <h2>Log Out</h2>
+              <div class="content-section logout-section">
+                <p class="logout-message">Are you sure you want to log out?</p>
+                <div class="logout-actions">
+                  <button class="btn btn-primary" onclick="SHARED.logout()">Confirm Logout</button>
+                  <button class="btn btn-secondary" onclick="document.querySelector('[data-section=contacts]').click()">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Load tracker submissions from API (not localStorage)
+    async function loadTrackerSubmissions() {
+      const trackerContent = document.getElementById('tracker-content');
+      
+      try {
+        // Fetch from API
+        if (typeof AUTH === 'undefined' || !AUTH.apiFetch) {
+          trackerContent.innerHTML = '<p class="empty-tracker">Error: Authentication not initialized.</p>';
+          return;
+        }
+        
+        const res = await AUTH.apiFetch('/submissions');
+        if (!res.ok) throw new Error('Failed to fetch submissions');
+        
+        const submissions = await res.json();
+        
+        if (submissions.length === 0) {
+          trackerContent.innerHTML = '<p class="empty-tracker">No submissions yet.</p>';
+          return;
+        }
+
+        // Sort by submission date (newest first)
+        submissions.sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at));
+
+        // Create tracker items
+        const html = submissions.map(sub => {
+          // Parse submitted_at to format date/time
+          let dateStr = '';
+          let timeStr = '';
+          if (sub.submitted_at) {
+            try {
+              const dt = new Date(sub.submitted_at);
+              dateStr = dt.toLocaleDateString();
+              timeStr = dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } catch (e) {
+              dateStr = sub.submitted_at;
+            }
+          }
+
+          return `
+            <div class="tracker-item">
+              <div class="tracker-header">
+                <div class="tracker-ref">
+                  <span class="ref-label">Ref #:</span>
+                  <span class="ref-number">${sub.reference_number}</span>
+                </div>
+                <span class="status-badge status-${sub.status.toLowerCase()}">${sub.status}</span>
+              </div>
+              <div class="tracker-details">
+                <p class="tracker-form-type"><strong>Form:</strong> ${sub.form_type}</p>
+                <p class="tracker-purpose"><strong>Purpose:</strong> ${sub.purpose}</p>
+                <p class="tracker-date"><strong>Submitted:</strong> ${dateStr} at ${timeStr}</p>
+                ${sub.remark ? `<p class="tracker-remark"><strong>Admin Note:</strong> ${sub.remark}</p>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+        
+        trackerContent.innerHTML = html;
+      } catch (e) {
+        console.error('Failed to load tracker submissions', e);
+        trackerContent.innerHTML = '<p class="empty-tracker">Error loading submissions. Please try again.</p>';
+      }
+    }
+
+    // Refresh tracker when Settings page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      loadTrackerSubmissions();
+    });
+
+    document.querySelectorAll('.settings-menu ul li').forEach(li=>{
+      li.addEventListener('click',()=>{
+        // Remove active class from all menu items
+        document.querySelectorAll('.settings-menu ul li').forEach(x=>x.classList.remove('active'))
+        li.classList.add('active')
+        
+        // Hide all section panels
+        document.querySelectorAll('.section-panel').forEach(panel=>panel.style.display='none')
+        
+        // Show selected section panel
+        const sectionId = li.getAttribute('data-section')
+        localStorage.setItem('settingsSelectedSection', sectionId);
+        const selectedSection = document.getElementById(sectionId)
+        if(selectedSection) selectedSection.style.display='block'
+
+        // Reload tracker if tracker is selected
+        if (sectionId === 'tracker') {
+          loadTrackerSubmissions();
+        }
+      })
+    })
+
+    // On page load, restore previously selected section from localStorage
+    document.addEventListener('DOMContentLoaded', function(){
+      var saved = localStorage.getItem('settingsSelectedSection') || 'contacts';
+      var targetLi = document.querySelector('.settings-menu ul li[data-section="'+saved+'"]');
+      if(targetLi) targetLi.click();
+
+      // Setup password change form handler
+      setupPasswordChangeForm();
+    });
+
+    // Setup password change form
+    function setupPasswordChangeForm() {
+      const form = document.getElementById('passwordForm');
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const currentPassword = document.getElementById('currentPassword').value.trim();
+        const newPassword = document.getElementById('newPassword').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+        const messageDiv = document.getElementById('passwordMessage');
+
+        // Reset message
+        messageDiv.style.display = 'none';
+        messageDiv.className = 'message';
+
+        // Validation
+        if (!currentPassword) {
+          showPasswordMessage('Current password is required', 'error');
+          return;
+        }
+
+        if (!newPassword || newPassword.length < 8) {
+          showPasswordMessage('New password must be at least 8 characters', 'error');
+          return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          showPasswordMessage('Passwords do not match', 'error');
+          return;
+        }
+
+        if (newPassword === currentPassword) {
+          showPasswordMessage('New password must be different from current password', 'error');
+          return;
+        }
+
+        // Update password via API
+        try {
+          const res = await AUTH.apiFetch('/auth/me', {
+            method: 'PATCH',
+            body: JSON.stringify({
+              password: newPassword,
+              currentPassword: currentPassword
+            })
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            showPasswordMessage(data.error || 'Password change failed', 'error');
+            return;
+          }
+
+          showPasswordMessage('Password changed successfully!', 'success');
+          form.reset();
+
+          // Clear message after 3 seconds
+          setTimeout(() => {
+            messageDiv.style.display = 'none';
+          }, 3000);
+
+        } catch (e) {
+          console.error('Password change error', e);
+          showPasswordMessage('An error occurred. Please try again.', 'error');
+        }
+      });
+    }
+
+    function showPasswordMessage(message, type) {
+      const messageDiv = document.getElementById('passwordMessage');
+      messageDiv.textContent = message;
+      messageDiv.style.display = 'block';
+      messageDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+      messageDiv.style.color = type === 'success' ? '#155724' : '#721c24';
+      messageDiv.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+    }
+  </script>
+  <script>
+    // Set API base URL for frontend-backend communication
+    window.__API_BASE_URL__ = 'http://localhost:3000';
+  </script>
+  <script src="../js/constants.js"></script>
+  <script src="../js/dom-utils.js"></script>
+  <script src="../js/notification.js"></script>
+  <script src="../js/form-validator.js"></script>
+  <script src="../js/include.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="../js/homepage.js"></script>
+</body>
+</html>

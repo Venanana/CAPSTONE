@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Landing - Barangay Inarawan</title>
+  <link rel="stylesheet" href="../css/homepage.css">
+  <link rel="stylesheet" href="../css/notification.css">
+  <link rel="stylesheet" href="../css/polish.css">
+</head>
+<body>
+  <div class="page-bg">
+    <header class="topbar">
+      <div class="header-left">
+        <div class="logo">
+          <img src="../images/brgy-logo.png" alt="Barangay Inarawan" class="logo-img">
+        </div>
+        <h1 class="header-title">BARANGAY INARAWAN</h1>
+      </div>
+      <div class="signin" id="signinContainer">
+        <input type="text" id="signinEmail" placeholder="Email">
+        <input type="password" id="signinPassword" placeholder="Password">
+        <button class="btn small" id="signinBtn">SIGN IN</button>
+        <button class="btn small" id="logoutBtn" style="display:none; margin-left:8px;">LOG OUT</button>
+        <div id="postSignLinks" style="margin-top:8px; display:flex; gap:8px; justify-content:center;"></div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="content-left">
+        <!-- Welcome/Hero Section -->
+        <div class="welcome-section">
+          <h2>Welcome to <span class="highlight">BARANGAY INARAWAN SERVICES</span></h2>
+          <p>Online Registration and Application Services</p>
+          <p class="subtitle">You can now apply online. Anytime. Anywhere.</p>
+        </div>
+
+        <!-- Brgy. Inarawan eServices Section -->
+        <div class="eservices">
+          <h3>Brgy. Inarawan eServices</h3>
+          <div class="eservices-grid">
+            <div class="eservice-item">Barangay I.D</div>
+            <div class="eservice-item">Barangay Clearance</div>
+            <div class="eservice-item">Barangay Certificate</div>
+            <div class="eservice-item">Certificate of Indigency</div>
+            <div class="eservice-item">Certificate of Residency</div>
+            <div class="eservice-item">First-Time Job Seeker</div>
+            <div class="eservice-item">Barangay Business Clearance</div>
+            <div class="eservice-item">Barangay Blotter / Certification</div>
+            <div class="eservice-item">Construction / Fencing Permit</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <!-- Registration Form Panel -->
+        <div class="register wide-register">
+          <h2 class="register-title">REGISTER AS NEW ACCOUNT</h2>
+
+          <form id="regForm">
+            <div class="name-row">
+              <div class="field-col">
+                <label>FIRST NAME:</label>
+                <input name="first" type="text" placeholder="First">
+              </div>
+              <div class="field-col">
+                <label>MIDDLE NAME:</label>
+                <input name="middle" type="text" placeholder="Middle">
+              </div>
+              <div class="field-col">
+                <label>LAST NAME:</label>
+                <input name="last" type="text" placeholder="Last">
+              </div>
+            </div>
+
+            <label>SUFFIX:</label>
+            <input name="suffix" type="text" placeholder="Jr., Sr., etc." class="full">
+
+            <div class="gender-row">
+              <label>GENDER</label>
+              <div class="gender-options">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+              </div>
+            </div>
+
+            <div class="birth-row">
+              <div class="birth-col">
+                <label>BIRTH DATE:</label>
+              </div>
+              <div class="birth-col selects">
+                <select id="birth-day" class="birth-day"></select>
+              </div>
+              <div class="birth-col selects">
+                <select id="birth-month" class="birth-month"></select>
+              </div>
+              <div class="birth-col selects">
+                <select id="birth-year" class="birth-year"></select>
+              </div>
+            </div>
+
+            <label>BIRTH PLACE:</label>
+            <input name="birthPlace" type="text" placeholder="City/Municipality, Province" class="full">
+
+            <label>CITIZENSHIP:</label>
+            <input name="citizenship" type="text" placeholder="e.g., Filipino" class="full">
+
+            <label>ADDRESS:</label>
+            <input name="address" type="text" placeholder="Street Address, Barangay" class="full">
+
+            <label>MOBILE:</label>
+            <input name="mobile" type="tel" placeholder="09XXXXXXXXX" class="full">
+
+            <label>EMAIL:</label>
+            <input name="email" type="email" placeholder="you@example.com" class="full">
+
+            <label>PASSWORD:</label>
+            <input name="password" type="password" placeholder="Password" class="full">
+
+            <label>CONFIRM PASSWORD:</label>
+            <input name="confirm" type="password" placeholder="Confirm Password" class="full">
+
+            <label class="terms"><input type="checkbox"> READ AND ACCEPT TERMS OF SERVICES</label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn register-btn">REGISTER</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="sitefoot">© 2026 - Barangay Inarawan Online Registration and Application Services - <a href="mailto:contact@inarawan.gov.ph" class="contact-link">Contact Us</a></footer>
+  </div>
+
+  <script>
+    // Set API base URL for frontend-backend communication
+    window.__API_BASE_URL__ = 'http://localhost:3000';
+  </script>
+  <script src="../js/constants.js"></script>
+  <script src="../js/dom-utils.js"></script>
+  <script src="../js/notification.js"></script>
+  <script src="../js/form-validator.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="../js/homepage.js"></script>
+</body>
+</html>
