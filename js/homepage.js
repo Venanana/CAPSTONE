@@ -20,33 +20,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Update sign in UI based on authentication state
 function updateSignInUI() {
-  const isLoggedIn = AUTH.isLoggedIn();
+  // Check if user is stored in sessionStorage
+  const currentUser = sessionStorage.getItem('currentUser');
+  const isLoggedIn = !!currentUser;
+  const user = currentUser ? JSON.parse(currentUser) : null;
 
   if (isLoggedIn) {
     DOM_UTILS.hide('#signinBtn');
     DOM_UTILS.show('#logoutBtn');
     DOM_UTILS.hide('#signinEmail');
     DOM_UTILS.hide('#signinPassword');
-    // show dashboard links
+
+    // Show dashboard links
     const linksContainer = document.getElementById('postSignLinks');
     if (linksContainer) {
       linksContainer.innerHTML = '';
-      const userRole = AUTH.getUserRole();
+
       const userDash = document.createElement('a');
       userDash.href = 'dashboard.html';
       userDash.textContent = 'Open Dashboard';
       userDash.className = 'btn small';
       linksContainer.appendChild(userDash);
 
-      if (userRole === 'admin') {
+      if (user && user.role === 'admin') {
         const adminDash = document.createElement('a');
-        adminDash.href = (typeof CONSTANTS !== 'undefined' && CONSTANTS.PAGES && CONSTANTS.PAGES.ADMIN_DASHBOARD) ? CONSTANTS.PAGES.ADMIN_DASHBOARD : '../admin-interface/html/admin-dashboard.html';
+        adminDash.href = '../admin-interface/html/admin-dashboard.html';
         adminDash.textContent = 'Admin Dashboard';
         adminDash.className = 'btn small';
         linksContainer.appendChild(adminDash);
       }
     }
   } else {
+    // User not logged in
     DOM_UTILS.show('#signinBtn');
     DOM_UTILS.hide('#logoutBtn');
     DOM_UTILS.show('#signinEmail');
@@ -54,6 +59,17 @@ function updateSignInUI() {
     const linksContainer = document.getElementById('postSignLinks');
     if (linksContainer) linksContainer.innerHTML = '';
   }
+}
+
+    }
+  } else {
+  DOM_UTILS.show('#signinBtn');
+  DOM_UTILS.hide('#logoutBtn');
+  DOM_UTILS.show('#signinEmail');
+  DOM_UTILS.show('#signinPassword');
+  const linksContainer = document.getElementById('postSignLinks');
+  if (linksContainer) linksContainer.innerHTML = '';
+}
 }
 
 // Populate birth date selects
