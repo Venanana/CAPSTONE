@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Account Setup - Barangay Inarawan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .notification {
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+      font-size: 14px;
+      border-left: 4px solid;
+    }
+
+    .notification.success {
+      background: #d4edda;
+      color: #155724;
+      border-color: #28a745;
+      display: block;
+    }
+
+    .notification.error {
+      background: #f8d7da;
+      color: #721c24;
+      border-color: #f5c6cb;
+      display: block;
+    }
+
+    .admin-list {
+      margin-top: 30px;
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+    }
+
+    .admin-list h3 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .admin-item {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #666;
+      border-left: 3px solid #667eea;
+    }
+
+    .admin-item strong {
+      color: #333;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .no-admins {
+      color: #999;
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    .info-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 12px;
+      border-radius: 4px;
+      margin-bottom: 25px;
+      font-size: 13px;
+      color: #0c5aa0;
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👨‍💼 Admin Setup</h1>
+    <p class="subtitle">Create administrator accounts for Barangay Inarawan</p>
+
+    <div class="info-box">
+      <strong>⚠️ Important:</strong>
+      This tool creates admin accounts in browser storage. Save/backup your browser data after creating admins!
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <form id="adminForm">
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="admin@inarawan.gov.ph" 
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input 
+          type="password" 
+          id="password" 
+          placeholder="Enter secure password" 
+          required
+        >
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input 
+            type="text" 
+            id="firstName" 
+            placeholder="John"
+          >
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input 
+            type="text" 
+            id="lastName" 
+            placeholder="Doe"
+          >
+        </div>
+      </div>
+
+      <button type="submit">Create Admin Account</button>
+    </form>
+
+    <div class="admin-list">
+      <h3>📋 Existing Admins</h3>
+      <div id="adminsList"></div>
+    </div>
+  </div>
+
+  <script>
+    // Set API base URL for frontend-backend communication
+    window.__API_BASE_URL__ = 'http://localhost:3000';
+  </script>
+  <script src="../js/auth.js"></script>
+  <script>
+    // Load and display existing admins on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      displayAdmins();
+    });
+
+    // Handle form submission
+    document.getElementById('adminForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+
+      if (!email || !password) {
+        showNotification('Email and password are required', 'error');
+        return;
+      }
+
+      if (password.length < 6) {
+        showNotification('Password must be at least 6 characters', 'error');
+        return;
+      }
+
+      // Create admin account
+      const result = AUTH.createAdmin(email, password, firstName, lastName);
+
+      if (result.success) {
+        showNotification(`✅ ${result.message}`, 'success');
+        document.getElementById('adminForm').reset();
+        displayAdmins();
+      } else {
+        showNotification(`❌ ${result.message}`, 'error');
+      }
+    });
+
+    // Show notification
+    function showNotification(message, type) {
+      const notif = document.getElementById('notification');
+      notif.textContent = message;
+      notif.className = `notification ${type}`;
+      
+      setTimeout(() => {
+        notif.className = 'notification';
+      }, 5000);
+    }
+
+    // Display existing admin accounts
+    function displayAdmins() {
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      const admins = Object.values(users).filter(u => u.role === 'admin');
+      const list = document.getElementById('adminsList');
+
+      if (admins.length === 0) {
+        list.innerHTML = '<p class="no-admins">No admin accounts created yet</p>';
+        return;
+      }
+
+      list.innerHTML = admins.map(admin => `
+        <div class="admin-item">
+          <strong>${admin.firstName} ${admin.lastName}`.trim() + `</strong>
+          ${admin.email}
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
