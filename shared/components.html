@@ -1,0 +1,118 @@
+<!-- Shared component templates for dashboard forms -->
+<template id="tpl-user-info">
+  <div class="dashboard-panel">
+    <h2>USER INFORMATION</h2>
+    <div class="form-section">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" class="form-input" placeholder="First Name" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Middle Name * (Type M/O if no Middle Name)</label>
+          <input type="text" class="form-input" placeholder="Middle Name" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" class="form-input" placeholder="Last Name" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Suffix</label>
+          <input type="text" class="form-input" placeholder="Suffix (Jr., Sr., etc.)" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label>Gender *</label>
+          <select class="form-select" autocomplete="off">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Civil Status *</label>
+          <select class="form-select" autocomplete="off">
+            <option value="">Select Civil Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="widowed">Widowed</option>
+            <option value="divorced">Divorced</option>
+            <option value="separated">Separated</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Citizenship *</label>
+          <select class="form-select" autocomplete="off">
+            <option value="">Select Citizenship</option>
+            <option value="philippine">Philippine</option>
+            <option value="foreign">Foreign</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Birth Date *</label>
+          <select class="form-select birth-day"></select>
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <select class="form-select birth-month"></select>
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <select class="form-select birth-year"></select>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-title">CONTACT INFORMATION</h3>
+    <div class="form-section">
+      <div class="form-row">
+        <div class="form-group full">
+          <label>Address *</label>
+          <input type="text" class="form-input" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Number *</label>
+          <input type="number" class="form-input" autocomplete="off" min="0">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-input" placeholder="Optional" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Register Voter in Barangay * </label>
+          <div class="radio-group">
+            <label class="radio-label"><input type="radio" name="voter"> Yes</label>
+            <label class="radio-label"><input type="radio" name="voter"> No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-title">PURPOSE</h3>
+    <div class="form-section">
+      <div class="form-row">
+        <div class="form-group full">
+          <label>Purpose of Request *</label>
+          <input type="text" class="form-input purpose-input" placeholder="Enter purpose of request" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Footer -->
+    <div class="form-footer">
+      <button class="submit-btn">Submit Details</button>
+    </div>
+  </div>
+</template>
